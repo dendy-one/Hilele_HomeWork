@@ -1,195 +1,123 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Collections.Specialized;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWork4
+namespace HomeWork5
 {
-
-    enum PizzaType
-    {
-        Margherita = 1,
-        Pepperoni,
-        Hawaiian,
-        Vegetarian
-    }
-
-    enum DrinkType
-    {
-        Cola = 5,
-        Fanta,
-        Pepsi
-    }
-
     internal class Program
-
     {
         static void Main(string[] args)
         {
-            //1
+
+            //#1
             //try
             //{
-            //    Console.WriteLine("ведите первое число");
-            //    var num1 = Convert.ToInt32(Console.ReadLine());
-            //    Console.WriteLine("ведите второе число");
-            //    var num2 = Convert.ToInt32(Console.ReadLine());
-            //    Console.WriteLine("Ведите тип операции (+,-,*,/,%)");
-            //    char mathOperation = Convert.ToChar(Console.ReadLine());
-            //    Console.Clear();
-            //    switch (mathOperation)
+            //    Console.WriteLine("начало диапазона");
+            //    int number1 = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine("конец диапазона");
+            //    int number2 = Convert.ToInt32(Console.ReadLine());
+
+            //    if (number1 >=  number2) 
             //    {
-
-            //        case '+':
-            //            Console.WriteLine($"{num1}+{num2}={num1 + num2}");
-            //            break;
-            //        case '-':
-            //            Console.WriteLine($"{num1}-{num2}={num1 - num2}");
-            //            break;
-            //        case '*':
-            //            Console.WriteLine($"{num1}*{num2}={num1 * num2}");
-            //            break;
-            //        case '/':
-            //            Console.WriteLine($"{num1}/{num2}={num1 / num2}");
-            //            break;
-
-            //        case '%':
-            //            Console.WriteLine($"{num1}%{num2}={num1 % num2}");
-            //            break;
-
-            //        default:
-            //            Console.WriteLine("Incorrect math action");
-            //            break;
-            //    }
-            //    Console.WriteLine("Нажмите любую клавишу") ;
-            //    Console.ReadKey();
-            //}
-            //catch (DivideByZeroException)
-            //{
-            //    Console.WriteLine("не можна ділити на нуль");
-            //    Console.ReadKey();
-            //}
-            //catch (FormatException)
-            //{
-            //    Console.WriteLine("калькулятор не понимает что вы хотите");
-            //    Console.ReadKey();
-            //}
-            //catch (Exception)
-            //{
-            //    Console.WriteLine("калькулятор сам не понимает какая ошибка");
-            //    Console.ReadKey();
-            //}
-
-
-
-
-
-
-
-            ////2
-
-
-
-
-
-
-
-
-            //try
-            //{
-            //    Console.WriteLine("Добро пожаловать в пиццерию!");
-            //    Console.WriteLine("Выберите пиццу (1-4):");
-
-            //    int pizzaChoice = Convert.ToInt32(Console.ReadLine());
-            //    if (pizzaChoice < 1 || pizzaChoice > 4)
-            //    {
-            //        Console.WriteLine("я же сказал что выбор от 1 до 4");
+            //        Console.WriteLine(" начало диапазона не может быть больше за конец");
             //        Console.ReadKey();
             //        return;
-                    
-                    
+
             //    }
-            //    PizzaType selectedPizza = (PizzaType)pizzaChoice;
-
-            //    Console.WriteLine($"Вы выбрали {selectedPizza}. Сколько пиццы вам нужно?");
-
-            //    int pizzaQuantity = Convert.ToInt32(Console.ReadLine());
-            //    if (pizzaQuantity < 1)
+            //    for (int i = number1; i <= number2; i++)
             //    {
-            //        Console.WriteLine("простите но я не могу вам дать ничего в руки");
-            //        Console.ReadKey();
-
-
-            //        return;
+            //        Console.Write(i + " ");
             //    }
+            //    Console.WriteLine();
 
-            //    Console.WriteLine("Теперь выберите напиток (5-7):");
-            //    int drinkChoice = Convert.ToInt32(Console.ReadLine());
-            //    if (drinkChoice < 5 || drinkChoice > 7)
+            //    for (int i = number2; i >= number1; i--)
             //    {
-            //        Console.WriteLine("я же сказал что выбор от 5 до 7");
-            //        Console.ReadKey();
 
 
-            //        return;
+
+            //        Console.Write(i + " ");
             //    }
+            //    Console.WriteLine();
 
-            //    DrinkType selectedDrink = (DrinkType)drinkChoice;
-
-
-            //    Console.WriteLine($"Вы выбрали {selectedDrink}. Сколько напитков вам нужно?");
-            //    int drinkQuantity = Convert.ToInt32(Console.ReadLine());
-            //    if (drinkQuantity < 1)
+            //    for (int i = number1; i <= number2; i++)
             //    {
-            //        Console.WriteLine("как понимаю стакан  вам нада");
-            //        Console.ReadKey();
-            //        return;
+            //        if (i % 7 != 0)
+            //        {
+            //            continue;
+            //        }
+            //        Console.Write(i + " ");
+
             //    }
-            //    double pizzaPrice = 10.0;
-            //    double drinkPrice = 3.0;
-            //    double totalPrice = (pizzaPrice * pizzaQuantity) + (drinkPrice * drinkQuantity);
+            //    Console.WriteLine();
 
 
+            //    int num5 = 0;
 
-            //    if (totalPrice > 50)
+            //    for (int i = number1; i <= number2; i++)
             //    {
-            //        double discount = totalPrice * 0.2;
-            //        totalPrice -= discount;
-            //        Console.WriteLine($"Скидка 20%  к оплате принята, в итоге ${totalPrice}");
+
+            //        if (i % 5 == 0)
+            //        {
+            //            num5++;
+
+
+            //        }
             //    }
+            //    Console.WriteLine($"в данном диапозоне {num5} чисел кратные 5 ");
+            //    Console.ReadKey();
+            //}
+            //catch(IndexOutOfRangeException)
+            //{
+            //    Console.WriteLine("числа вийшли з діапозона");
+            //}
+            //catch (Exception) 
+            //{
+            //    Console.WriteLine("перепрошую сталась помилка");
+            //}
+
+
+
+
+            //#2
+            //Console.OutputEncoding = System.Text.Encoding.UTF8;
+            //Console.WriteLine("Введіть перше число: ");
+            //int a = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Введіть друге число: ");
+            //int b = int.Parse(Console.ReadLine());
+
+            //int sumEven = 0;
+            //int sumOdd = 0;
+            //int sumMultipleOf9 = 0;
+
+            //for (int number = a; number <= b; number++)
+            //{
+            //    if (number % 2 == 0)
+            //        sumEven += number;
             //    else
-            //    {
-            //        Console.WriteLine($"Итого к оплате: ${totalPrice}");
-            //    }
+            //        sumOdd += number;
 
-
-
-
-
-            //    int freePizzas = pizzaQuantity / 5;
-            //    Console.WriteLine($" вот вам боннусные бесплатные  {freePizzas} пицци");
-
-            //    Console.WriteLine("вот ваш заказ");
-            //    Console.ReadKey();
+            //    if (number % 9 == 0)
+            //        sumMultipleOf9 += number;
             //}
+
+            //int countEven = (b - a + 1) / 2;
+            //int countOdd = (b - a + 1) - countEven;
+            //int countMultipleOf9 = (b - a + 1) / 9;
+
+            //double averageEven = (double)sumEven / countEven;
+            //double averageOdd = (double)sumOdd / countOdd;
+            //double averageMultipleOf9 = (double)sumMultipleOf9 / countMultipleOf9;
+
+            //Console.WriteLine($"Сума парних чисел: {sumEven}, середнє арифметичне: {averageEven}\nСума непарних чисел: {sumOdd}, середнє арифметичне:{averageOdd}");
             
-            //catch (Exception ex) 
-            //{
-            //    Console.WriteLine("пожалуйста следуйте инструкциям", ex.Message );
-            //    Console.ReadKey();
-            //}
+            //Console.WriteLine($"Сума чисел, кратних 9: {sumMultipleOf9}, середнє арифметичне: {averageMultipleOf9}");
+            //Console.ReadKey();
+
+
 
         }
     }
 }
-        
-    
-
-
-
-
-
-    
-
