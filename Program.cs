@@ -81,40 +81,47 @@ namespace HomeWork5
 
 
 
-            //#2
-            //Console.OutputEncoding = System.Text.Encoding.UTF8;
-            //Console.WriteLine("Введіть перше число: ");
-            //int a = int.Parse(Console.ReadLine());
-            //Console.WriteLine("Введіть друге число: ");
-            //int b = int.Parse(Console.ReadLine());
+           //#2
+//try
+//{
+//    Console.OutputEncoding = System.Text.Encoding.UTF8;
+//    Console.WriteLine("Введіть перше число: ");
+//    int a = int.Parse(Console.ReadLine());
+//    Console.WriteLine("Введіть друге число: ");
+//    int b = int.Parse(Console.ReadLine());
 
-            //int sumEven = 0;
-            //int sumOdd = 0;
-            //int sumMultipleOf9 = 0;
+//    int sumEven = 0;
+//    int sumOdd = 0;
+//    int sumMultipleOf9 = 0;
 
-            //for (int number = a; number <= b; number++)
-            //{
-            //    if (number % 2 == 0)
-            //        sumEven += number;
-            //    else
-            //        sumOdd += number;
+//    for (int number = a; number <= b; number++)
+//    {
+//        if (number % 2 == 0)
+//            sumEven += number;
+//        else
+//            sumOdd += number;
 
-            //    if (number % 9 == 0)
-            //        sumMultipleOf9 += number;
-            //}
+//        if (number % 9 == 0)
+//            sumMultipleOf9 += number;
+//    }
 
-            //int countEven = (b - a + 1) / 2;
-            //int countOdd = (b - a + 1) - countEven;
-            //int countMultipleOf9 = (b - a + 1) / 9;
+//    int countEven = (b - a + 1) / 2;
+//    int countOdd = (b - a + 1) - countEven;
+//    int countMultipleOf9 = (b - a + 1) / 9;
 
-            //double averageEven = (double)sumEven / countEven;
-            //double averageOdd = (double)sumOdd / countOdd;
-            //double averageMultipleOf9 = (double)sumMultipleOf9 / countMultipleOf9;
+//    double averageEven = (double)sumEven / countEven;
+//    double averageOdd = (double)sumOdd / countOdd;
+//    double averageMultipleOf9 = (double)sumMultipleOf9 / countMultipleOf9;
 
-            //Console.WriteLine($"Сума парних чисел: {sumEven}, середнє арифметичне: {averageEven}\nСума непарних чисел: {sumOdd}, середнє арифметичне:{averageOdd}");
-            
-            //Console.WriteLine($"Сума чисел, кратних 9: {sumMultipleOf9}, середнє арифметичне: {averageMultipleOf9}");
-            //Console.ReadKey();
+//    Console.WriteLine($"Сума парних чисел: {sumEven}, середнє арифметичне: {averageEven}\nСума непарних чисел: {sumOdd}, середнє арифметичне:{averageOdd}");
+
+//    Console.WriteLine($"Сума чисел, кратних 9: {sumMultipleOf9}, середнє арифметичне: {averageMultipleOf9}");
+//    Console.ReadKey();
+//}
+//catch (Exception ex) 
+//{  Console.WriteLine(ex.Message);
+//    Console.ReadKey();
+//}
 
 
 
