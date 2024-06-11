@@ -1,130 +1,190 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWork5
+namespace Home_Work6
 {
     internal class Program
     {
-        static void Main(string[] args)
+        //1
+        //public static double CalculaterPower(double baseNumber, int exponent)
+        //{
+        //    return Math.Pow(baseNumber, exponent);
+        //}
+
+        //public static void Main()
+        //{
+        //    try
+        //    {
+        //        Console.OutputEncoding = Encoding.UTF8;
+
+        //        Console.WriteLine("Ведіть основу ступеня");
+        //        double baseNumber = Convert.ToDouble(Console.ReadLine());
+        //        Console.WriteLine("Ведіть показник ступення ");
+        //        int exponent = Convert.ToInt32(Console.ReadLine());
+
+        //        double result = CalculaterPower(baseNumber, exponent);
+        //        Console.WriteLine($"Результат: {result}");
+        //        Console.ReadKey();
+        //    }
+        //    catch (Exception) 
+        //    {
+        //        Console.WriteLine("прошу делать всё по инструкции");
+        //    } 
+
+
+
+        //}
+
+
+
+
+
+
+        //2
+        //public static int SumInRange(int start, int end)
+        //{
+        //    int sum = 0;
+        //    for (int i = start; i <= end; i++)
+        //    {
+        //        sum += i;
+        //    }
+        //    return sum;
+        //}
+
+        //public static void Main()
+        //{
+        //    try
+        //    {
+        //       Console.OutputEncoding = Encoding.UTF8;
+
+        //        Console.Write("Введіть початок діапазону: ");
+        //        int start = int.Parse(Console.ReadLine());
+
+        //        Console.Write("Введіть кінець діапазону: ");
+        //        int end = int.Parse(Console.ReadLine());
+
+        //        int result = SumInRange(start, end);
+        //        Console.WriteLine($"Сума чисел від {start} до {end}: {result}");
+        //        Console.ReadKey();
+        //    } catch(Exception) { Console.WriteLine("Please not do this again"); }
+
+        //}
+
+
+
+
+        //3
+
+        //        public static bool IsPerfectNumber(int number)
+        //        {
+        //            int sumOfDivisors = 0;
+        //            for (int i = 1; i < number; i++)
+        //            {
+        //                if (number % i == 0)
+        //                {
+        //                    sumOfDivisors += i;
+        //                }
+        //            }
+        //            return sumOfDivisors == number;
+        //        }
+
+        //        public static void Main()
+
+        //        {
+        //            try
+        //            {
+        //               Console.OutputEncoding = Encoding.UTF8;
+
+
+        //                int start = Convert.ToInt32(Console.ReadLine());
+        //        int end = Convert.ToInt32(Console.ReadLine());
+        //                for (int num = start; num <= end; num++)
+        //                {
+        //                    if (IsPerfectNumber(num))
+        //                    {
+        //                        Console.WriteLine($"Досконале число: {num}");
+        //                    }
+        //}
+        //                   Console.ReadKey();
+        //            } 
+        //            catch(Exception) 
+        //            {
+
+        //               Console.WriteLine("please not do this again ");
+        //               Console.ReadKey();
+
+        //            }
+        //        }
+
+
+        //4
+        //public static void DisplayCard(string[] cards, int cardIndex)
+        //{
+        //    if (cardIndex >= 0 && cardIndex < cards.Length)
+        //    {
+        //        Console.WriteLine($"Гральна карта #{cardIndex+1}: {cards[cardIndex]}");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Неправильний індекс карти.");
+        //    }
+        //}
+
+        //public static void Main()
+        //{
+        //    try
+        //    {
+        //        Console.OutputEncoding = Encoding.UTF8;
+
+        //        string[] deckOfCards = { "Пиковая 6", "Чирвовий Туз", "Бубновий Король" };
+        //        Console.WriteLine("Ведите цифру от 0 до 2");
+        //        int cardIndexToDisplay = Convert.ToInt32(Console.ReadLine());
+        //        DisplayCard(deckOfCards, cardIndexToDisplay);
+        //        Console.ReadKey();
+        //    }
+        //    catch(Exception) { Console.WriteLine("пожалуйста ведите цифры в диапозоне");
+        //        Console.ReadKey();
+        //    }
+        //}
+
+
+
+
+
+        //5
+        public static bool IsHappyNumber(int number)
         {
+         
+            int digit1 = number / 100000;
+            int digit2 = (number / 10000) % 10;
+            int digit3 = (number / 1000) % 10;
+            int digit4 = (number / 100) % 10;
+            int digit5 = (number / 10) % 10;
+            int digit6 = number % 10;
+            int sumFirstThreeDigits = digit1 + digit2 + digit3;
+            int sumLastThreeDigits = digit4 + digit5 + digit6;
 
-            //#1
-            //try
-            //{
-            //    Console.WriteLine("начало диапазона");
-            //    int number1 = Convert.ToInt32(Console.ReadLine());
-            //    Console.WriteLine("конец диапазона");
-            //    int number2 = Convert.ToInt32(Console.ReadLine());
+            return sumFirstThreeDigits == sumLastThreeDigits;
+        }
 
-            //    if (number1 >=  number2) 
-            //    {
-            //        Console.WriteLine(" начало диапазона не может быть больше за конец");
-            //        Console.ReadKey();
-            //        return;
-
-            //    }
-            //    for (int i = number1; i <= number2; i++)
-            //    {
-            //        Console.Write(i + " ");
-            //    }
-            //    Console.WriteLine();
-
-            //    for (int i = number2; i >= number1; i--)
-            //    {
-
-
-
-            //        Console.Write(i + " ");
-            //    }
-            //    Console.WriteLine();
-
-            //    for (int i = number1; i <= number2; i++)
-            //    {
-            //        if (i % 7 != 0)
-            //        {
-            //            continue;
-            //        }
-            //        Console.Write(i + " ");
-
-            //    }
-            //    Console.WriteLine();
-
-
-            //    int num5 = 0;
-
-            //    for (int i = number1; i <= number2; i++)
-            //    {
-
-            //        if (i % 5 == 0)
-            //        {
-            //            num5++;
-
-
-            //        }
-            //    }
-            //    Console.WriteLine($"в данном диапозоне {num5} чисел кратные 5 ");
-            //    Console.ReadKey();
-            //}
-            //catch(IndexOutOfRangeException)
-            //{
-            //    Console.WriteLine("числа вийшли з діапозона");
-            //}
-            //catch (Exception) 
-            //{
-            //    Console.WriteLine("перепрошую сталась помилка");
-            //}
-
-
-
-
-           //#2
-//try
-//{
-//    Console.OutputEncoding = System.Text.Encoding.UTF8;
-//    Console.WriteLine("Введіть перше число: ");
-//    int a = int.Parse(Console.ReadLine());
-//    Console.WriteLine("Введіть друге число: ");
-//    int b = int.Parse(Console.ReadLine());
-
-//    int sumEven = 0;
-//    int sumOdd = 0;
-//    int sumMultipleOf9 = 0;
-
-//    for (int number = a; number <= b; number++)
-//    {
-//        if (number % 2 == 0)
-//            sumEven += number;
-//        else
-//            sumOdd += number;
-
-//        if (number % 9 == 0)
-//            sumMultipleOf9 += number;
-//    }
-
-//    int countEven = (b - a + 1) / 2;
-//    int countOdd = (b - a + 1) - countEven;
-//    int countMultipleOf9 = (b - a + 1) / 9;
-
-//    double averageEven = (double)sumEven / countEven;
-//    double averageOdd = (double)sumOdd / countOdd;
-//    double averageMultipleOf9 = (double)sumMultipleOf9 / countMultipleOf9;
-
-//    Console.WriteLine($"Сума парних чисел: {sumEven}, середнє арифметичне: {averageEven}\nСума непарних чисел: {sumOdd}, середнє арифметичне:{averageOdd}");
-
-//    Console.WriteLine($"Сума чисел, кратних 9: {sumMultipleOf9}, середнє арифметичне: {averageMultipleOf9}");
-//    Console.ReadKey();
-//}
-//catch (Exception ex) 
-//{  Console.WriteLine(ex.Message);
-//    Console.ReadKey();
-//}
-
-
-
+        public static void Main()
+        {
+            try
+            {
+                Console.OutputEncoding = Encoding.UTF8;
+                Console.WriteLine("Ведіть шести значне число");
+                int inputNumber = Convert.ToInt32(Console.ReadLine());
+                bool isHappy = IsHappyNumber(inputNumber);
+                Console.WriteLine($"Число {inputNumber} є щасливим: {isHappy}");
+                Console.ReadKey();
+            }
+            catch(Exception) 
+            {
+                Console.WriteLine("будь ласка водьт тільки одне  6 значне число");
+            }
         }
     }
 }
