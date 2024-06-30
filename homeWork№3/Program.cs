@@ -4,85 +4,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace homeWork_3
+namespace homeWork8
 {
     internal class Program
     {
+        static List<string> taskList = new List<string>();
+
         static void Main(string[] args)
         {
-            // 1
-            //int studentGrades1 = Convert.ToInt32(Console.ReadLine());
-            //int studentGrades2 = Convert.ToInt32(Console.ReadLine());
-            //int studentGrades3 = Convert.ToInt32(Console.ReadLine());
-            //int studentGrades4 = Convert.ToInt32(Console.ReadLine());
-            //int studentGrades5 = Convert.ToInt32(Console.ReadLine());
-            //int Grades = studentGrades1 + studentGrades2 + studentGrades3 + studentGrades4 + studentGrades5;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            while (true)
+            {
+                Console.WriteLine("Оберіть дію:");
+                Console.WriteLine("1. Додати завдання");
+                Console.WriteLine("2. Змінити завдання");
+                Console.WriteLine("3. Видалити завдання");
+                Console.WriteLine("4. Переглянути завдання");
+                Console.WriteLine("5. Вийти");
 
-            //if (Grades / 5 > 3)
-            //{
-            //    Console.WriteLine("допущен до екзаменна");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("не допущений");
-            //}
-            //Console.ReadKey();
+                int choice = int.Parse(Console.ReadLine());
 
+                switch (choice)
+                {
+                    case 1:
+                        AddTask();
+                        break;
+                    case 2:
+                        ChangeTask();
+                        break;
+                    case 3:
+                        RemoveTask();
+                        break;
+                    case 4:
+                        ViewTasks();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Недійсний вибір. Спробуйте ще раз.");
+                        break;
+                }
+            }
+        }
 
+        static void AddTask()
+        {
+            Console.Write("Введіть завдання: ");
+            string task = Console.ReadLine();
+            taskList.Add(task);
+            Console.WriteLine($"Завдання '{task}' додано до списку.");
+        }
 
-            //2
-            //var num = Convert.ToDecimal(Console.ReadLine());
-            //if (num % 2 == 0)
-            //{
-            //    num = num * 3;
-            //    Console.WriteLine(num);
-            //}
+        static void ChangeTask()
+        {
+            Console.Write("Введіть індекс завдання, яке хочете змінити: ");
+            int index = int.Parse(Console.ReadLine());
 
-            //else
-            //{
-            //    num = num / 2;
-            //    Console.WriteLine(num);
-            //}
-            //Console.ReadKey();
+            if (index >= 0 && index < taskList.Count)
+            {
+                Console.Write("Введіть нове завдання: ");
+                string newTask = Console.ReadLine();
+                taskList[index] = newTask;
+                Console.WriteLine($"Завдання з індексом {index} змінено на '{newTask}'.");
+            }
+            else
+            {
+                Console.WriteLine("Недійсний індекс завдання.");
+            }
+        }
 
+        static void RemoveTask()
+        {
+            Console.Write("Введіть індекс завдання, яке хочете видалити: ");
+            int index = int.Parse(Console.ReadLine());
 
+            if (index >= 0 && index < taskList.Count)
+            {
+                taskList.RemoveAt(index);
+                Console.WriteLine($"Завдання з індексом {index} видалено.");
+            }
+            else
+            {
+                Console.WriteLine("Недійсний індекс завдання.");
+            }
+        }
 
-
-            //3
-            //Console.WriteLine("Перше число");
-            //int num1 = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("Друге число");
-            //int num2 = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("Операція (+,-,*,/)");
-            //char operation = Convert.ToChar(Console.ReadLine());
-            //if (operation == '+')
-            //{
-            //    int num3 = num1 + num2;
-            //    Console.WriteLine($"{num1}+{num2}={num3}");
-            //}
-            //else if (operation == '-')
-            //{
-            //    int num3 = num1 - num2;
-
-            //    Console.WriteLine($"{num1}-{num2}={num3}");
-            //}
-
-            //else if (operation == '*')
-            //{
-            //    int num3 = num1 * num2;
-
-            //    Console.WriteLine($"{num1}*{num2}={num3}");
-            //}
-
-            //else if (operation == '/')
-            //{
-            //    int num3 = num1 / num2;
-
-            //    Console.WriteLine($"{num1}/{num2}={num3}");
-            //}
-            //Console.ReadKey();
-
-
+        static void ViewTasks()
+        {
+            Console.WriteLine("Список завдань:");
+            for (int i = 0; i < taskList.Count; i++)
+            {
+                Console.WriteLine($"{i}. {taskList[i]}");
+            }
         }
     }
+        
+    
 }
