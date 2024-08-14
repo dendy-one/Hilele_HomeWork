@@ -1,97 +1,80 @@
 ﻿using System;
 
-class Car
+public interface IMovable
 {
-    public string Brand { get; set; }
-    public string Model { get; set; }
-    public int Year { get; set; }
-    private double mileage;
+    void Move(int deltaX, int deltaY);
+}
 
-    public int Age
+public abstract class Shape : IMovable
+{
+    public abstract void Move(int deltaX, int deltaY);
+}
+
+public class Circle : Shape
+{
+    public int X { get; private set; }
+    public int Y { get; private set; }
+    public double Radius { get; set; }
+
+    public Circle(int x, int y, double radius)
     {
-        get
-        {
-            int currentYear = DateTime.Now.Year;
-            return currentYear - Year;
-        }
+        X = x;
+        Y = y;
+        Radius = radius;
     }
 
-    public double Mileage
+    public override void Move(int deltaX, int deltaY)
     {
-        get { return mileage; }
-        private set { mileage = value; }
-    }
-
-    public Car(string brand, string model, int year, double mileage)
-    {
-        Brand = brand;
-        Model = model;
-        Year = year;
-        Mileage = mileage;
-    }
-
-    public void Drive(double distance)
-    {
-        if (distance > 0)
-        {
-            Mileage += distance;
-            Console.WriteLine($"Пробіг автомобіля збільшено на {distance} км. Загальний пробіг: {Mileage} км.");
-        }
-        else
-        {
-            Console.WriteLine("Некоректне значення відстані. Пробіг не змінено.");
-        }
-    }
-
-    ~Car()
-    {
-        Console.WriteLine($"Об'єкт автомобіля {Brand} {Model} видалено.");
+        X += deltaX;
+        Y += deltaY;
+        Console.WriteLine($"Коло перенесено на ({X}, {Y})");
     }
 }
 
-class ElectricCar : Car
+public class Rectangle : Shape
 {
-    public double BatteryCapacity { get; set; }
+    public int X { get; private set; }
+    public int Y { get; private set; }
+    public double Width { get; private set; }
+    public double Height { get; private set; }
 
-    public ElectricCar(string brand, string model, int year, double mileage, double batteryCapacity)
-        : base(brand, model, year, mileage)
+    public Rectangle(int x, int y, double width, double height)
     {
-        BatteryCapacity = batteryCapacity;
+        X = x;
+        Y = y;
+        Width = width;
+        Height = height;
     }
 
-    public void Charge(double amount)
+    public override void Move(int deltaX, int deltaY)
     {
-        if (amount > 0)
-        {
-            BatteryCapacity += amount;
-            Console.WriteLine($"Заряд батареї збільшено на {amount} кВт·год.");
-        }
-        else
-        {
-            Console.WriteLine("Некоректне значення заряду. Заряд батареї не змінено.");
-        }
+        X += deltaX;
+        Y += deltaY;
+        Console.WriteLine($"Прямокутник переміщено до ({X}, {Y})");
     }
 
-    public new void Drive(double distance)
+    public void Resize(Vector vector)
     {
-        if (distance > 0)
-        {
-            base.Drive(distance);
-            double energyConsumption = distance * 0.1;
-            BatteryCapacity -= energyConsumption;
+        Width += vector.X;
+        Height += vector.Y;
+        Console.WriteLine($"Розмір прямокутника змінено на {Width} x {Height}");
+    }
+}
 
-          
-            if (BatteryCapacity < 0)
-            {
-                BatteryCapacity = 0;
-            }
+public struct Vector
+{
+    public double X { get; set; }
+    public double Y { get; set; }
 
-            Console.WriteLine($"Рівень заряду батареї після поїздки: {BatteryCapacity:F2} кВт·год.");
-        }
-        else
-        {
-            Console.WriteLine("Некоректне значення відстані. Пробіг не змінено.");
-        }
+    public Vector(double x, double y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    public double Length()
+    {
+        return Math.Sqrt(X * X + Y * Y);
     }
 }
 
@@ -99,68 +82,23 @@ class Program
 {
     static void Main()
     {
-        try
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            //данні звичайного авто
-            Console.WriteLine("Введіть інформацію про звичайний автомобіль:");
-            Console.Write("Марка: ");
-            string brand = Console.ReadLine();
-            Console.Write("Модель: ");
-            string model = Console.ReadLine();
-            Console.Write("Рік випуску: ");
-            int year = int.Parse(Console.ReadLine());
-            Console.Write("Пробіг (км): ");
-            double mileage = double.Parse(Console.ReadLine());
 
-            Car myCar = new Car(brand, model, year, mileage);
+        Circle circle = new Circle(0, 0, 5);
+        circle.Move(10, 15); 
 
-            Console.WriteLine($"\nМарка: {myCar.Brand}, Модель: {myCar.Model}, Рік: {myCar.Year}, Пробіг: {myCar.Mileage} км, Вік: {myCar.Age} років");
+        
+        Rectangle rectangle = new Rectangle(0, 0, 20, 10);
+        rectangle.Move(5, 5); 
 
-            //електро авто
-            Console.WriteLine("\nВведіть інформацію про електромобіль:");
-            Console.Write("Марка: ");
-            string eBrand = Console.ReadLine();
-            Console.Write("Модель: ");
-            string eModel = Console.ReadLine();
-            Console.Write("Рік випуску: ");
-            int eYear = int.Parse(Console.ReadLine());
-            Console.Write("Пробіг (км): ");
-            double eMileage = double.Parse(Console.ReadLine());
-            Console.Write("Ємність батареї (кВт·год): ");
-            double batteryCapacity = double.Parse(Console.ReadLine());
+      
+        Vector resizeVector = new Vector(10, 20);
+        rectangle.Resize(resizeVector); 
 
-            ElectricCar myElectricCar = new ElectricCar(eBrand, eModel, eYear, eMileage, batteryCapacity);
-
-            Console.WriteLine($"\nМарка: {myElectricCar.Brand}, Модель: {myElectricCar.Model}, Рік: {myElectricCar.Year}, Пробіг: {myElectricCar.Mileage} км, Ємність батареї: {myElectricCar.BatteryCapacity} кВт·год");
-
-            
-            Console.Write("\nВведіть відстань для поїздки на звичайному автомобілі (км): ");
-            double distance = double.Parse(Console.ReadLine());
-            myCar.Drive(distance);
-
-            Console.Write("\nВведіть відстань для поїздки на електромобілі (км): ");
-            double eDistance = double.Parse(Console.ReadLine());
-            myElectricCar.Drive(eDistance);
-
-            Console.Write("\nВведіть кількість заряду для електромобіля (кВт·год): ");
-            double chargeAmount = double.Parse(Console.ReadLine());
-            myElectricCar.Charge(chargeAmount);
-
-            
-            Console.WriteLine($"\nПісля поїздки і зарядки:");
-            Console.WriteLine($"Звичайний автомобіль - Пробіг: {myCar.Mileage} км, Вік: {myCar.Age} років");
-            Console.WriteLine($"Електромобіль - Пробіг: {myElectricCar.Mileage} км, Ємність батареї: {myElectricCar.BatteryCapacity} кВт·год");
-
-           
-            myElectricCar = null;
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Помилка введення даних. Переконайтеся, що всі числові значення введені правильно.");
-        }
+        
+        Console.WriteLine($"Довжина вектора: {resizeVector.Length()}");
+        Console.ReadKey();
     }
 }
+
