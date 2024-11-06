@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header, section, footer {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+header button {
+    align-self: flex-end;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header button:hover {
+    background-color: #45a049;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.contact-link {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.contact-link:hover {
+    background-color: #45a049;
+}
+
+.skills-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    margin-right: 15px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+/* Темна тема */
+body.dark-theme {
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+body.dark-theme header, 
+body.dark-theme section, 
+body.dark-theme footer {
+    background-color: #444;
+    color: #f9f9f9;
+}
+
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme p,
+body.dark-theme .contact-link {
+    color: #f9f9f9;
+}
+
+body.dark-theme .contact-link {
+    background-color: #666;
+}
+
+body.dark-theme .contact-link:hover {
+    background-color: #555;
+}
