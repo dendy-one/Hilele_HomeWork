@@ -8,11 +8,11 @@ public class Program
     {
         
         Console.WriteLine("Displaying Documentation Attributes:");
-        AttributeReader.DisplayDocumentationAttributes(typeof(MyClass));
+        AttributeReader.DisplayDocumentationAttributes(typeof(Class));
 
        
         Console.WriteLine("Executing Methods by Author 'Thomas Hardy ':");
-        MethodExecutor.ExecuteMethodsByAuthor(typeof(MyClass), "Thomas Hardy ");
+        MethodExecutor.ExecuteMethodsByAuthor(typeof(Class), "Thomas Hardy ");
         Console.ReadKey();
     }
 }

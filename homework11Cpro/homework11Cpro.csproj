@@ -46,7 +46,7 @@
     <Compile Include="public class\AttributeReader.cs" />
     <Compile Include="public class\DocumentationAttribute.cs" />
     <Compile Include="public class\MethodExecutor.cs" />
-    <Compile Include="public class\MyClass.cs" />
+    <Compile Include="public class\DocumentationName.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
