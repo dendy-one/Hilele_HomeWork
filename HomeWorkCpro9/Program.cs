@@ -12,6 +12,7 @@ namespace MultitaskingExample
         {
             await Task1.RunAsync();
             await Task2.RunAsync();
+            await Task3.RunAsync();
         }
     }
 }
