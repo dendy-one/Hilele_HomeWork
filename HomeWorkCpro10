@@ -1,0 +1,94 @@
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Customers;
+
+
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    age INT,
+    country VARCHAR(50)
+);
+
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    item VARCHAR(100),
+    amount DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+
+INSERT INTO Customers (customer_id, first_name, last_name, age, country) VALUES
+(1, 'Djonator', 'Djostar', 30, 'USA'),
+(2, 'Mery', 'Gein', 25, 'UK'),
+(3, 'Mary', 'Johnson', 20, 'USA'),
+(4, 'Dio', 'Brando', 65, 'USA');
+
+
+INSERT INTO Orders (order_id, customer_id, item, amount) VALUES
+(1, 1, 'Laptop', 800.00),
+(2, 2, 'Tablet', 200.00),
+(3, 3, 'Smartphone', 500.00),
+(4, 3, 'Book', 15.00),
+(5, NULL, 'Camera', 150.00);
+
+
+SELECT * FROM Customers;
+SELECT * FROM Customers WHERE country = 'USA';
+SELECT first_name, last_name, age FROM Customers WHERE age > 25;
+SELECT * FROM Customers ORDER BY last_name ASC;
+
+
+SELECT Customers.first_name, Customers.last_name, Orders.item, Orders.amount
+FROM Customers
+INNER JOIN Orders ON Customers.customer_id = Orders.customer_id;
+
+SELECT Customers.first_name, Customers.last_name, Orders.item, Orders.amount
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+
+SELECT Customers.first_name, Customers.last_name, Orders.item, Orders.amount
+FROM Customers
+RIGHT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+
+SELECT Customers.first_name, Customers.last_name, Orders.item, Orders.amount
+FROM Customers
+FULL JOIN Orders ON Customers.customer_id = Orders.customer_id;
+
+
+SELECT first_name, last_name
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id
+WHERE Orders.customer_id IS NULL;
+
+SELECT item, amount
+FROM Orders
+LEFT JOIN Customers ON Orders.customer_id = Customers.customer_id
+WHERE Customers.customer_id IS NULL;
+
+SELECT Customers.first_name, Customers.last_name, COUNT(Orders.order_id) AS order_count
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id
+GROUP BY Customers.first_name, Customers.last_name;
+
+
+SELECT Customers.first_name, Customers.last_name, Orders.item, Orders.amount
+FROM Customers
+INNER JOIN Orders ON Customers.customer_id = Orders.customer_id
+WHERE Orders.amount > 500;
+
+SELECT Customers.first_name, Customers.last_name, SUM(Orders.amount) AS total_amount
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id
+GROUP BY Customers.first_name, Customers.last_name;
+
+
+SELECT c1.first_name AS FirstName1, c1.last_name, c2.first_name AS FirstName2
+FROM Customers c1
+JOIN Customers c2 ON c1.last_name = c2.last_name AND c1.first_name <> c2.first_name;
+
+SELECT Customers.first_name, Customers.last_name, Orders.item, Orders.amount
+FROM Customers
+CROSS JOIN Orders;
